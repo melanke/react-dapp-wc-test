@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HelloWorld from "./components/HelloWorld";
+import {WalletConnectProvider} from "./WalletConnectContext";
+import { Buffer } from 'buffer';
+// polyfill Buffer for client
+if (!window.Buffer) {
+    window.Buffer = Buffer;
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <WalletConnectProvider autoManageSession={true} options={{
+            projectId: 'a9ff54e3d56a52230ed8767db4d4a810',
+            relayUrl: 'wss://relay.walletconnect.com',
+            metadata: {
+                name: 'MyApplicationName', // your application name to be displayed on the wallet
+                description: 'My Application description', // description to be shown on the wallet
+                url: 'https://myapplicationdescription.app/', // url to be linked on the wallet
+                icons: ['https://myapplicationdescription.app/myappicon.png'] // icon to be shown on the wallet
+            }
+        }}>
+            <HelloWorld />
+        </WalletConnectProvider>
     </div>
   );
 }
