@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import HelloWorld from "./components/HelloWorld";
-import {WalletConnectProvider} from "./WalletConnectContext";
+import {WalletConnectProvider} from "@cityofzion/wallet-connect-sdk-react";
 import { Buffer } from 'buffer';
 // polyfill Buffer for client
 if (!window.Buffer) {

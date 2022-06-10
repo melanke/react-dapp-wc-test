@@ -1094,6 +1094,24 @@
     "@cityofzion/neon-api" "^5.0.0"
     "@cityofzion/neon-core" "^5.0.0"
 
+"@cityofzion/wallet-connect-sdk-core@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@cityofzion/wallet-connect-sdk-core/-/wallet-connect-sdk-core-2.0.0.tgz#6bbaa445503c65dac137d8b4b6611007dd05708e"
+  integrity sha512-D8iwcFBeRtGOJm5b5N1m36O9WIv2W+EON+4pFlg3SYHBCkdqGZUqVgAqZEtXSOu6sLGEx54TDyKrX4F8QW19kw==
+  dependencies:
+    "@cityofzion/neon-core" "^5.0.0"
+    "@walletconnect/sign-client" "^2.0.0-beta.100"
+    "@walletconnect/types" "^2.0.0-beta.100"
+
+"@cityofzion/wallet-connect-sdk-react@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@cityofzion/wallet-connect-sdk-react/-/wallet-connect-sdk-react-2.0.0.tgz#932117756968f671014c8e55d148a4a120060c4f"
+  integrity sha512-zSEfuCUIWwR3eQjHDfjacL1TO4CePx0mpodxlSC4dY3BeVeTYkHsHMSFjzi8wMZQiVD4xXB24aAN6Ut8KR29Xw==
+  dependencies:
+    "@cityofzion/wallet-connect-sdk-core" "^2.0.0"
+    "@walletconnect/sign-client" "^2.0.0-beta.100"
+    "@walletconnect/types" "^2.0.0-beta.100"
+
 "@csstools/normalize.css@*":
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-12.0.0.tgz#a9583a75c3f150667771f30b60d9f059473e62c4"

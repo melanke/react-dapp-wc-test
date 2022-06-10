@@ -1,5 +1,5 @@
 import React from "react";
-import {useWalletConnect, WitnessScope} from "../WalletConnectContext";
+import {useWalletConnect, WitnessScope} from "@cityofzion/wallet-connect-sdk-react";
 
 const scripthash = '0xd2a4cff31913016155e38e474a2c06d08be276cf'
 
