@@ -147,7 +147,7 @@ function HelloWorld () {
     return <div>
         {!wcSdk && <span>Loading...</span>}
         {wcSdk && (<div>
-            {!wcSdk.isConnected() && <button onClick={wcSdk.connect}>Connect</button>}
+            {!wcSdk.isConnected() && <button onClick={() => wcSdk.connect('neo3:testnet')}>Connect</button>}
             {wcSdk.isConnected() && <button onClick={wcSdk.disconnect}>Disconnect</button>}
 
             <button onClick={transferGas}>Transfer Gas</button>
