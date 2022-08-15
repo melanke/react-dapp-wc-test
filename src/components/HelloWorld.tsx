@@ -6,6 +6,14 @@ const scripthash = '0xd2a4cff31913016155e38e474a2c06d08be276cf'
 function HelloWorld () {
     const wcSdk = useWalletConnect()
 
+    const connect = async (): Promise<void> => {
+        await wcSdk.connect('neo3:testnet')
+    }
+
+    const disconnect = async (): Promise<void> => {
+        await wcSdk.disconnect()
+    }
+
     const transferGas = async (): Promise<void> => {
         const resp = await wcSdk.invokeFunction({
             invocations: [{
@@ -19,6 +27,27 @@ function HelloWorld () {
                 ]
             }],
             signers: [{ scopes: 1 }]
+        })
+
+        console.log(resp)
+        window.alert(JSON.stringify(resp, null, 2))
+    }
+
+    const transferGasWithExtraFee = async (): Promise<void> => {
+        const resp = await wcSdk.invokeFunction({
+            invocations: [{
+                scriptHash: scripthash,
+                operation: 'transfer',
+                args: [
+                    { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
+                    { type: 'Address', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
+                    { type: 'Integer', value: 100000000 },
+                    { type: 'Array', value: [] }
+                ]
+            }],
+            signers: [{ scopes: 1 }],
+            extraSystemFee: 1000000,
+            extraNetworkFee: 100000
         })
 
         console.log(resp)
@@ -147,10 +176,11 @@ function HelloWorld () {
     return <div>
         {!wcSdk && <span>Loading...</span>}
         {wcSdk && (<div>
-            {!wcSdk.isConnected() && <button onClick={() => wcSdk.connect('neo3:testnet')}>Connect</button>}
-            {wcSdk.isConnected() && <button onClick={wcSdk.disconnect}>Disconnect</button>}
+            {!wcSdk.isConnected() && <button onClick={connect}>Connect</button>}
+            {wcSdk.isConnected() && <button onClick={disconnect}>Disconnect</button>}
 
             <button onClick={transferGas}>Transfer Gas</button>
+            <button onClick={transferGasWithExtraFee}>Transfer Gas with Extra fee</button>
             <button onClick={multiInvoke}>Multi Invoke</button>
             <button onClick={multiTestInvoke}>Multi Test Invoke</button>
             <button onClick={multiInvokeFailing}>Multi Invoke Failing</button>
