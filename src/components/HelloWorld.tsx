@@ -1,13 +1,24 @@
 import React from "react";
-import {useWalletConnect, WitnessScope} from "@cityofzion/wallet-connect-sdk-react";
+import { NetworkType, useWalletConnect, WitnessScope } from '@cityofzion/wallet-connect-sdk-react'
 
-const scripthash = '0xd2a4cff31913016155e38e474a2c06d08be276cf'
+const networks: Record<NetworkType, {name: string}> = {
+    'neo3:mainnet': {
+        name: 'MainNet',
+    },
+    'neo3:testnet': {
+        name: 'TestNet',
+    },
+    'neo3:private': {
+        name: 'Private Network',
+    },
+}
 
 function HelloWorld () {
     const wcSdk = useWalletConnect()
+    const [networkType, setNetworkType] = React.useState<NetworkType>('neo3:testnet')
 
     const connect = async (): Promise<void> => {
-        await wcSdk.connect('neo3:testnet')
+        await wcSdk.connect(networkType)
     }
 
     const disconnect = async (): Promise<void> => {
@@ -17,7 +28,7 @@ function HelloWorld () {
     const transferGas = async (): Promise<void> => {
         const resp = await wcSdk.invokeFunction({
             invocations: [{
-                scriptHash: scripthash,
+                scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
                 operation: 'transfer',
                 args: [
                     { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
@@ -36,7 +47,7 @@ function HelloWorld () {
     const transferGasWithExtraFee = async (): Promise<void> => {
         const resp = await wcSdk.invokeFunction({
             invocations: [{
-                scriptHash: scripthash,
+                scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
                 operation: 'transfer',
                 args: [
                     { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
@@ -54,61 +65,6 @@ function HelloWorld () {
         window.alert(JSON.stringify(resp, null, 2))
     }
 
-    const multiInvoke = async (): Promise<void> => {
-        const resp = await wcSdk.invokeFunction({
-                invocations: [
-                    {
-                        scriptHash: '0x010101c0775af568185025b0ce43cfaa9b990a2a',
-                        operation: 'getStream',
-                        args: [{ type: 'Integer', value: 17 }]
-                    }, {
-                        scriptHash: scripthash,
-                        operation: 'transfer',
-                        args: [
-                            { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
-                            { type: 'Address', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
-                            { type: 'Integer', value: 100000000 },
-                            { type: 'Array', value: [] }
-                        ]
-                    }
-                ],
-                signers: [{ scopes: WitnessScope.Global, allowedContracts: ['0x010101c0775af568185025b0ce43cfaa9b990a2a'] }]
-            }
-        )
-
-        console.log(resp)
-        window.alert(JSON.stringify(resp, null, 2))
-    }
-
-    const multiTestInvoke = async (): Promise<void> => {
-        const resp = await wcSdk.testInvoke({
-            invocations: [
-                {
-                    scriptHash: '0x010101c0775af568185025b0ce43cfaa9b990a2a',
-                    operation: 'withdraw',
-                    args: [
-                        { type: 'Integer', value: 2 },
-                        { type: 'Integer', value: 1 }
-                    ]
-                },
-                {
-                    scriptHash: scripthash,
-                    operation: 'transfer',
-                    args: [
-                        { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
-                        { type: 'Address', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
-                        { type: 'Integer', value: 100000000 },
-                        { type: 'Array', value: [] }
-                    ]
-                }
-            ],
-            signers: [{ scopes: WitnessScope.CalledByEntry }]
-        })
-
-        console.log(resp)
-        window.alert(JSON.stringify(resp, null, 2))
-    }
-
     const multiInvokeFailing = async (): Promise<void> => {
         const resp = await wcSdk.invokeFunction({
             invocations: [
@@ -119,7 +75,7 @@ function HelloWorld () {
                     abortOnFail: true
                 },
                 {
-                    scriptHash: scripthash,
+                    scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
                     operation: 'transfer',
                     args: [
                         { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
@@ -138,16 +94,16 @@ function HelloWorld () {
 
     const signAndVerify = async (): Promise<void> => {
         if (!wcSdk) return
-    const resp = await wcSdk.signMessage({ message: 'Caralho, muleq, o baguiu eh issumermo taix ligado na missão?', version: 2 })
+        const resp = await wcSdk.signMessage({ message: 'Caralho, muleq, o baguiu eh issumermo taix ligado na missão?', version: 2 })
 
-    console.log(resp)
-    window.alert(JSON.stringify(resp, null, 2))
+        console.log(resp)
+        window.alert(JSON.stringify(resp, null, 2))
 
-    const resp2 = await wcSdk.verifyMessage(resp)
+        const resp2 = await wcSdk.verifyMessage(resp)
 
-    console.log(resp2)
-    window.alert(JSON.stringify(resp2, null, 2))
-}
+        console.log(resp2)
+        window.alert(JSON.stringify(resp2, null, 2))
+    }
 
     const verifyFailling = async (): Promise<void> => {
         const resp2 = await wcSdk.verifyMessage({
@@ -176,17 +132,23 @@ function HelloWorld () {
     return <div>
         {!wcSdk && <span>Loading...</span>}
         {wcSdk && (<div>
-            {!wcSdk.isConnected() && <button onClick={connect}>Connect</button>}
-            {wcSdk.isConnected() && <button onClick={disconnect}>Disconnect</button>}
+            {!wcSdk.isConnected() && <>
+                <select onChange={(e: any) => setNetworkType(e.target.value)}
+                        value={networkType}>
+                    {Object.keys(networks).map((key) => (<option value={key} key={key}>{networks[key as NetworkType].name}</option>))}
+                </select>
+                <button onClick={connect}>Connect</button>
+            </>}
+            {wcSdk.isConnected() && <>
+                <button onClick={disconnect}>Disconnect</button>
+                <button onClick={transferGas}>Transfer Gas</button>
+                <button onClick={transferGasWithExtraFee}>Transfer Gas with Extra fee</button>
+                <button onClick={multiInvokeFailing}>Multi Invoke Failing</button>
+                <button onClick={signAndVerify}>Sign and Verify Message</button>
+                <button onClick={verifyFailling}>Verify Failling</button>
+                <button onClick={verify}>Verify Success</button>
+            </>}
 
-            <button onClick={transferGas}>Transfer Gas</button>
-            <button onClick={transferGasWithExtraFee}>Transfer Gas with Extra fee</button>
-            <button onClick={multiInvoke}>Multi Invoke</button>
-            <button onClick={multiTestInvoke}>Multi Test Invoke</button>
-            <button onClick={multiInvokeFailing}>Multi Invoke Failing</button>
-            <button onClick={signAndVerify}>Sign and Verify Message</button>
-            <button onClick={verifyFailling}>Verify Failling</button>
-            <button onClick={verify}>Verify Success</button>
         </div>)}
     </div>
 }
