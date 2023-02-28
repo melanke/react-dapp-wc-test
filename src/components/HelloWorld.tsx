@@ -1,5 +1,5 @@
 import React from "react";
-import { NetworkType, useWalletConnect, WitnessScope } from '@cityofzion/wallet-connect-sdk-react'
+import { NetworkType, useWalletConnect } from '@cityofzion/wallet-connect-sdk-react'
 
 const networks: Record<NetworkType, {name: string}> = {
     'neo3:mainnet': {
@@ -85,7 +85,7 @@ function HelloWorld () {
                     ],
                     abortOnFail: true
                 }],
-            signers: [{ scopes: WitnessScope.CalledByEntry }]
+            signers: [{ scopes: 1 }]
         })
 
         console.log(resp)
