@@ -1,5 +1,6 @@
 import React from "react";
 import { NetworkType, useWalletConnect } from '@cityofzion/wallet-connect-sdk-react'
+import {CONST} from "@cityofzion/neon-core";
 
 const networks: Record<NetworkType, {name: string}> = {
     'neo3:mainnet': {
@@ -129,6 +130,27 @@ function HelloWorld () {
         window.alert(JSON.stringify(resp2, null, 2))
     }
 
+    const traverseIterator = async (): Promise<void> => {
+        const resp = await wcSdk.testInvoke({
+            invocations: [
+                {
+                    operation: "getAllCandidates",
+                    scriptHash: CONST.NATIVE_CONTRACT_HASH.NeoToken,
+                    args: [],
+                },
+            ],
+            signers: [{ scopes: 1 }],
+        });
+
+        const sessionId = resp.session as string;
+        const iteratorId = resp.stack[0].id as string;
+
+        const resp2 = await wcSdk.traverseIterator(sessionId, iteratorId, 10);
+
+        console.log(resp2);
+        window.alert(JSON.stringify(resp2, null, 2));
+    };
+
     return <div>
         {!wcSdk && <span>Loading...</span>}
         {wcSdk && (<div>
@@ -147,6 +169,7 @@ function HelloWorld () {
                 <button onClick={signAndVerify}>Sign and Verify Message</button>
                 <button onClick={verifyFailling}>Verify Failling</button>
                 <button onClick={verify}>Verify Success</button>
+                <button onClick={traverseIterator}>Traverse Iterator</button>
             </>}
 
         </div>)}
