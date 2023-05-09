@@ -1,5 +1,5 @@
 import React from "react";
-import { NetworkType, useWalletConnect } from '@cityofzion/wallet-connect-sdk-react'
+import {DEFAULT_METHODS, NetworkType, useWalletConnect} from '@cityofzion/wallet-connect-sdk-react'
 import {CONST} from "@cityofzion/neon-core";
 
 const networks: Record<NetworkType, {name: string}> = {
@@ -19,7 +19,7 @@ function HelloWorld () {
     const [networkType, setNetworkType] = React.useState<NetworkType>('neo3:testnet')
 
     const connect = async (): Promise<void> => {
-        await wcSdk.connect(networkType)
+        await wcSdk.connect(networkType, [...DEFAULT_METHODS, 'traverseIterator', 'getWalletInfo'])
     }
 
     const disconnect = async (): Promise<void> => {
@@ -151,6 +151,13 @@ function HelloWorld () {
         window.alert(JSON.stringify(resp2, null, 2));
     };
 
+    const getWalletInfo = async (): Promise<void> => {
+        const resp = await wcSdk.getWalletInfo()
+
+        console.log(resp)
+        window.alert(JSON.stringify(resp, null, 2))
+    }
+
     return <div>
         {!wcSdk && <span>Loading...</span>}
         {wcSdk && (<div>
@@ -170,6 +177,7 @@ function HelloWorld () {
                 <button onClick={verifyFailling}>Verify Failling</button>
                 <button onClick={verify}>Verify Success</button>
                 <button onClick={traverseIterator}>Traverse Iterator</button>
+                <button onClick={getWalletInfo}>Get Wallet Info</button>
             </>}
 
         </div>)}
