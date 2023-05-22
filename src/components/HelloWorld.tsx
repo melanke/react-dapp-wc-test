@@ -45,6 +45,39 @@ function HelloWorld () {
         window.alert(JSON.stringify(resp, null, 2))
     }
 
+    const bugTest = async (): Promise<void> => {
+        const resp = await wcSdk.invokeFunction({
+            invocations: [{
+                scriptHash: "0xcc638d55d99fc81295daccbaf722b84f179fb9c4",
+                operation: "setRoyaltiesForContract",
+                args: [{
+                    type: "Hash160",
+                    value: "0x577a51f7d39162c9de1db12a6b319c848e4c54e5"
+                }, {
+                    type: "Array",
+                    value: [{
+                        type: "Array",
+                        value: [{
+                            type: "Hash160",
+                            value: "7e9237a93f64407141a5b86c760200c66c81e2ec"
+                        }, {
+                            type: "Integer",
+                            value: 500
+                        }]
+                    }]
+                }],
+            }],
+            signers: [{
+                account: "7e9237a93f64407141a5b86c760200c66c81e2ec",
+                scopes: 16,
+                allowedContracts: ["0x577a51f7d39162c9de1db12a6b319c848e4c54e5", "0xcc638d55d99fc81295daccbaf722b84f179fb9c4"]
+            }]
+        })
+
+        console.log(resp)
+        window.alert(JSON.stringify(resp, null, 2))
+    }
+
     const transferGasWithExtraFee = async (): Promise<void> => {
         const resp = await wcSdk.invokeFunction({
             invocations: [{
@@ -170,6 +203,7 @@ function HelloWorld () {
                 <button onClick={verifyFailling}>Verify Failling</button>
                 <button onClick={verify}>Verify Success</button>
                 <button onClick={traverseIterator}>Traverse Iterator</button>
+                <button onClick={bugTest}>Bug Test</button>
             </>}
 
         </div>)}
