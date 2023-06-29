@@ -1,5 +1,5 @@
 import React from "react";
-import {DEFAULT_METHODS, NetworkType, useWalletConnect} from '@cityofzion/wallet-connect-sdk-react'
+import {NetworkType, useWalletConnect, Version} from '@cityofzion/wallet-connect-sdk-react'
 import {CONST} from "@cityofzion/neon-core";
 
 const networks: Record<NetworkType, {name: string}> = {
@@ -19,7 +19,7 @@ function HelloWorld () {
     const [networkType, setNetworkType] = React.useState<NetworkType>('neo3:testnet')
 
     const connect = async (): Promise<void> => {
-        await wcSdk.connect(networkType, [...DEFAULT_METHODS, 'traverseIterator', 'getWalletInfo'])
+        await wcSdk.connect(networkType, ['invokeFunction', 'testInvoke', 'signMessage','verifyMessage', 'traverseIterator', 'getWalletInfo', 'getNetworkVersion'])
     }
 
     const disconnect = async (): Promise<void> => {
@@ -32,8 +32,8 @@ function HelloWorld () {
                 scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
                 operation: 'transfer',
                 args: [
-                    { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
-                    { type: 'Address', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
+                    { type: 'Hash160', value: wcSdk.getAccountAddress() ?? '' },
+                    { type: 'Hash160', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
                     { type: 'Integer', value: 100000000 },
                     { type: 'Array', value: [] }
                 ]
@@ -51,8 +51,8 @@ function HelloWorld () {
                 scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
                 operation: 'transfer',
                 args: [
-                    { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
-                    { type: 'Address', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
+                    { type: 'Hash160', value: wcSdk.getAccountAddress() ?? '' },
+                    { type: 'Hash160', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
                     { type: 'Integer', value: 100000000 },
                     { type: 'Array', value: [] }
                 ]
@@ -79,8 +79,8 @@ function HelloWorld () {
                     scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
                     operation: 'transfer',
                     args: [
-                        { type: 'Address', value: wcSdk.getAccountAddress() ?? '' },
-                        { type: 'Address', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
+                        { type: 'Hash160', value: wcSdk.getAccountAddress() ?? '' },
+                        { type: 'Hash160', value: 'NbnjKGMBJzJ6j5PHeYhjJDaQ5Vy5UYu4Fv' },
                         { type: 'Integer', value: 100000000 },
                         { type: 'Array', value: [] }
                     ],
@@ -95,7 +95,20 @@ function HelloWorld () {
 
     const signAndVerify = async (): Promise<void> => {
         if (!wcSdk) return
-        const resp = await wcSdk.signMessage({ message: 'Caralho, muleq, o baguiu eh issumermo taix ligado na missão?', version: 2 })
+        const resp = await wcSdk.signMessage({ message: 'Caralho, muleq, o baguiu eh issumermo taix ligado na missão?', version: Version.DEFAULT })
+
+        console.log(resp)
+        window.alert(JSON.stringify(resp, null, 2))
+
+        const resp2 = await wcSdk.verifyMessage(resp)
+
+        console.log(resp2)
+        window.alert(JSON.stringify(resp2, null, 2))
+    }
+
+    const signWithoutSaltAndVerify = async (): Promise<void> => {
+        if (!wcSdk) return
+        const resp = await wcSdk.signMessage({ message: 'Caralho, muleq, o baguiu eh issumermo taix ligado na missão?', version: Version.WITHOUT_SALT })
 
         console.log(resp)
         window.alert(JSON.stringify(resp, null, 2))
@@ -174,6 +187,7 @@ function HelloWorld () {
                 <button onClick={transferGasWithExtraFee}>Transfer Gas with Extra fee</button>
                 <button onClick={multiInvokeFailing}>Multi Invoke Failing</button>
                 <button onClick={signAndVerify}>Sign and Verify Message</button>
+                <button onClick={signWithoutSaltAndVerify}>Sign Without Salt and Verify Message</button>
                 <button onClick={verifyFailling}>Verify Failling</button>
                 <button onClick={verify}>Verify Success</button>
                 <button onClick={traverseIterator}>Traverse Iterator</button>

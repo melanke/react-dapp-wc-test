@@ -1063,40 +1063,22 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cityofzion/neo3-invoker@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@cityofzion/neo3-invoker/-/neo3-invoker-1.3.0.tgz#c3cbdcb177e0296df8aa24e612734d6360807ba7"
-  integrity sha512-VoBaEjb6gxO6otL27WmyrzwhAUPUX5qev86yot+HZGbZ/tMh8FSkmFdVfOMIvb3C5nLZMj7kiPNlgr484kxqMQ==
+"@cityofzion/neo3-invoker@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@cityofzion/neo3-invoker/-/neo3-invoker-1.4.1.tgz#70b617dd73574682f6e3f0b775ab8df2120e49e1"
+  integrity sha512-2BNSQRydNuGZi7wam/kdvCoTw8m3wq1zbC6QBkkS9maRO/gliLEgDj0hjBazaP+slqtwR8DMdQsgbonJ9oIYEA==
 
-"@cityofzion/neo3-signer@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@cityofzion/neo3-signer/-/neo3-signer-1.0.1.tgz#01736c3e5de639601b642108dc5b5a0db6f71da7"
-  integrity sha512-3E7A2iePdrbWiQ2CP6NGP6AKlsEFgWnQ9v8lyXsbXKtRT+nQw4FyRgP6LYw7oSSW8WDYJJaR8Pv/EyTqw0+wnA==
+"@cityofzion/neo3-signer@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@cityofzion/neo3-signer/-/neo3-signer-1.1.0.tgz#3fa81977e1778b6acc863c85788a0525ecc4c21a"
+  integrity sha512-mUJNF5gOuX1aGdbuOwZ+nke03y2GavzYwnti8dr8kzm6lNbn5npLsy4vSHxfgS+gt+TYEeZTtnlf87QkjkEiNQ==
 
 "@cityofzion/neon-api@^5.2.2":
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/@cityofzion/neon-api/-/neon-api-5.2.2.tgz#21554ddb7ece6f0a73df08ad0aaf59bae8668d95"
   integrity sha512-zNaGI+0C3r/w0olV6cpbdl1OarvX/Qen8bnEO3Xlqybc8uswu0AoL/mhfjXPFd75UkWmQTC7JCziKQULTfLblg==
 
-"@cityofzion/neon-core@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@cityofzion/neon-core/-/neon-core-5.0.0.tgz#6b242782404df474285ad7760224871444cc1d35"
-  integrity sha512-OJPZsgWxXFCSSFo6WiGmxn+/2XP0w0JXT8oYOqYxKfFYJXNh6/ENuglMs7w5jMpFsYb/Hp6Hy8qdXf/Q3Es9jg==
-  dependencies:
-    abort-controller "3.0.0"
-    bignumber.js "7.2.1"
-    bn.js "5.2.0"
-    bs58 "4.0.1"
-    buffer "6.0.3"
-    cross-fetch "^3.1.4"
-    crypto-js "4.1.1"
-    elliptic "6.5.4"
-    lodash "4.17.21"
-    loglevel "1.8.0"
-    loglevel-plugin-prefix "0.8.4"
-    scrypt-js "3.0.1"
-
-"@cityofzion/neon-core@^5.3.0":
+"@cityofzion/neon-core@5.3.0", "@cityofzion/neon-core@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@cityofzion/neon-core/-/neon-core-5.3.0.tgz#ce3bede855e39d8d153b4f9c3a491803603019e3"
   integrity sha512-iOHY7rFuDZavH87klFIxOYpu3PnPm6pS1xY7qhkFrRtcuTqRBMzhoZstE70XLDh01ujC5y2+gXvgz4OOpzgdXQ==
@@ -1121,25 +1103,25 @@
     "@cityofzion/neon-api" "^5.2.2"
     "@cityofzion/neon-core" "^5.3.0"
 
-"@cityofzion/wallet-connect-sdk-core@2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@cityofzion/wallet-connect-sdk-core/-/wallet-connect-sdk-core-2.3.4.tgz#c508065e0d4b7c37c6e3953cb4f5b044ee0f3f67"
-  integrity sha512-m+NeSnId0QH7CkSddkNHQrqAH2wgmHRNURh8vWdZOmeiKMH4YBa/a8bpoAX1QJgkMG70AFHGY1BIhfP8pYx6fA==
+"@cityofzion/wallet-connect-sdk-core@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@cityofzion/wallet-connect-sdk-core/-/wallet-connect-sdk-core-2.5.3.tgz#ffa017c57fc939e05c53b5896e2ca842d89b06e2"
+  integrity sha512-CDMgGQe6aCbDt1brN3KEgvvJquAHJOhVrJcTUfrEkNp2S48xpyTYfskBK+5L1Z/iM/sxuY92qTjnnqxXUmaByw==
   dependencies:
-    "@cityofzion/neo3-invoker" "1.3.0"
-    "@cityofzion/neo3-signer" "1.0.1"
-    "@cityofzion/neon-core" "^5.0.0"
+    "@cityofzion/neo3-invoker" "1.4.1"
+    "@cityofzion/neo3-signer" "1.1.0"
+    "@cityofzion/neon-core" "5.3.0"
     "@walletconnect/sign-client" "2.0.0-rc.3"
     "@walletconnect/types" "2.0.0-rc.3"
 
-"@cityofzion/wallet-connect-sdk-react@2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@cityofzion/wallet-connect-sdk-react/-/wallet-connect-sdk-react-2.3.4.tgz#9c0e6b86b1eac10d9b4e37355861936d7662bc49"
-  integrity sha512-LEtlC645CHdrs6shbS7f0hftnYXXfZnjxmeP8lnTVoCd23M1LMX6b7iwOGJPv/1wC200vZ8gyt1ZGEaNFTnL1g==
+"@cityofzion/wallet-connect-sdk-react@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@cityofzion/wallet-connect-sdk-react/-/wallet-connect-sdk-react-2.5.3.tgz#dc4b1d2e062b9a362d240e4ed0200bd86b8a9b13"
+  integrity sha512-TOlXBtMDgn7aphCePqVzB47l8YrtT3lnJ/veZRmAVijhvlrEhkU1oxi55hIshfuDu3c7rZ8coL79X1Jf9bmVLA==
   dependencies:
-    "@cityofzion/neo3-invoker" "1.3.0"
-    "@cityofzion/neo3-signer" "1.0.1"
-    "@cityofzion/wallet-connect-sdk-core" "2.3.4"
+    "@cityofzion/neo3-invoker" "1.4.1"
+    "@cityofzion/neo3-signer" "1.1.0"
+    "@cityofzion/wallet-connect-sdk-core" "2.5.3"
     "@walletconnect/sign-client" "2.0.0-rc.3"
     "@walletconnect/types" "2.0.0-rc.3"
 
@@ -3371,13 +3353,6 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-base-x@^3.0.2:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/base-x/-/base-x-3.0.9.tgz#6349aaabb58526332de9f60995e548a53fe21320"
-  integrity sha512-H7JU6iBHTal1gp56aKoaa//YUxEaAOUiydvrV/pILqIHXTtqxSkATOnDA2u+jZ/61sD+L/412+7kzXRtWukhpQ==
-  dependencies:
-    safe-buffer "^5.0.1"
-
 base-x@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/base-x/-/base-x-4.0.0.tgz#d0e3b7753450c73f8ad2389b5c018a4af7b2224a"
@@ -3407,11 +3382,6 @@ big.js@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
-
-bignumber.js@7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-7.2.1.tgz#80c048759d826800807c4bfd521e50edbba57a5f"
-  integrity sha512-S4XzBk5sMB+Rcb/LNcpzXr57VRTxgAvaAEDAl1AwRx27j00hT84O6OkteE7u8UB3NuaaygCRrEpqox4uDOrbdQ==
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -3513,13 +3483,6 @@ browserslist@^4.0.0, browserslist@^4.14.5, browserslist@^4.16.6, browserslist@^4
     escalade "^3.1.1"
     node-releases "^2.0.3"
     picocolors "^1.0.0"
-
-bs58@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/bs58/-/bs58-4.0.1.tgz#be161e76c354f6f788ae4071f63f34e8c4f0a42a"
-  integrity sha1-vhYedsNU9veIrkBx9j806MTwpCo=
-  dependencies:
-    base-x "^3.0.2"
 
 bs58@5.0.0:
   version "5.0.0"
@@ -3937,7 +3900,7 @@ create-require@^1.1.0:
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
 
-cross-fetch@^3.1.4, cross-fetch@^3.1.5:
+cross-fetch@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
   integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
@@ -8681,7 +8644,7 @@ safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
-safe-buffer@5.2.1, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@~5.2.0:
+safe-buffer@5.2.1, safe-buffer@>=5.1.0, safe-buffer@^5.1.0, safe-buffer@~5.2.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
