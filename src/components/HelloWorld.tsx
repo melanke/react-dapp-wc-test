@@ -1,6 +1,5 @@
 import React from "react";
 import {NetworkType, useWalletConnect, Version} from '@cityofzion/wallet-connect-sdk-react'
-import {CONST} from "@cityofzion/neon-core";
 
 const networks: Record<NetworkType, {name: string}> = {
     'neo3:mainnet': {
@@ -24,6 +23,22 @@ function HelloWorld () {
 
     const disconnect = async (): Promise<void> => {
         await wcSdk.disconnect()
+    }
+
+    const getMyBalance = async (): Promise<void> => {
+        const resp = await wcSdk.testInvoke({
+            invocations: [{
+                scriptHash: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
+                operation: 'balanceOf',
+                args: [
+                    { type: 'Hash160', value: wcSdk.getAccountAddress() ?? '' }
+                ]
+            }],
+            signers: [{ scopes: 1 }]
+        })
+
+        console.log(resp)
+        window.alert(JSON.stringify(resp, null, 2))
     }
 
     const transferGas = async (): Promise<void> => {
@@ -148,7 +163,7 @@ function HelloWorld () {
             invocations: [
                 {
                     operation: "getAllCandidates",
-                    scriptHash: CONST.NATIVE_CONTRACT_HASH.NeoToken,
+                    scriptHash: 'ef4073a0f2b305a38ec4050e4d3d28bc40ea63f5',
                     args: [],
                 },
             ],
@@ -183,6 +198,7 @@ function HelloWorld () {
             </>}
             {wcSdk.isConnected() && <>
                 <button onClick={disconnect}>Disconnect</button>
+                <button onClick={getMyBalance}>Get My Balance</button>
                 <button onClick={transferGas}>Transfer Gas</button>
                 <button onClick={transferGasWithExtraFee}>Transfer Gas with Extra fee</button>
                 <button onClick={multiInvokeFailing}>Multi Invoke Failing</button>

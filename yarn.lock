@@ -1073,12 +1073,7 @@
   resolved "https://registry.yarnpkg.com/@cityofzion/neo3-signer/-/neo3-signer-1.1.0.tgz#3fa81977e1778b6acc863c85788a0525ecc4c21a"
   integrity sha512-mUJNF5gOuX1aGdbuOwZ+nke03y2GavzYwnti8dr8kzm6lNbn5npLsy4vSHxfgS+gt+TYEeZTtnlf87QkjkEiNQ==
 
-"@cityofzion/neon-api@^5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@cityofzion/neon-api/-/neon-api-5.2.2.tgz#21554ddb7ece6f0a73df08ad0aaf59bae8668d95"
-  integrity sha512-zNaGI+0C3r/w0olV6cpbdl1OarvX/Qen8bnEO3Xlqybc8uswu0AoL/mhfjXPFd75UkWmQTC7JCziKQULTfLblg==
-
-"@cityofzion/neon-core@5.3.0", "@cityofzion/neon-core@^5.3.0":
+"@cityofzion/neon-core@5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@cityofzion/neon-core/-/neon-core-5.3.0.tgz#ce3bede855e39d8d153b4f9c3a491803603019e3"
   integrity sha512-iOHY7rFuDZavH87klFIxOYpu3PnPm6pS1xY7qhkFrRtcuTqRBMzhoZstE70XLDh01ujC5y2+gXvgz4OOpzgdXQ==
@@ -1094,14 +1089,6 @@
     loglevel "1.8.0"
     loglevel-plugin-prefix "0.8.4"
     scrypt-js "3.0.1"
-
-"@cityofzion/neon-js@^5.3.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@cityofzion/neon-js/-/neon-js-5.3.0.tgz#0c31aac06de629c5e91ef6bcb78ceaf083f89e7a"
-  integrity sha512-mtKBtYJoTJjJFnGw6Lrlo0OU2XGfPR4w71XIFfDfmoroadbRrZdVDn8KLhuJRXJP+atYJB3f0DmW6e6Ptp0M6g==
-  dependencies:
-    "@cityofzion/neon-api" "^5.2.2"
-    "@cityofzion/neon-core" "^5.3.0"
 
 "@cityofzion/wallet-connect-sdk-core@2.5.3":
   version "2.5.3"
