@@ -1,2 +1,2 @@
-# React Dapp WC Test
-This project only works with `beta`. It will not work with Neon Wallet.
+# Obsolete
+Moved to https://github.com/CityOfZion/wallet-connect-sdk/tree/main/examples/wc-dapp-react
